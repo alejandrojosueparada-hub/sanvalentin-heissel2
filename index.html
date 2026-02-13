@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>¿Quieres ser mi San Valentín?</title>
+
+    <style>
+        body {
+            margin: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            margin-top: 60px;
+            font-size: 40px;
+            color: white;
+        }
+
+        .buttons {
+            margin-top: 50px;
+            position: relative;
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yes {
+            background-color: #ff4d6d;
+            color: white;
+            margin-right: 20px;
+        }
+
+        #yes:hover {
+            transform: scale(1.1);
+        }
+
+        #no {
+            background-color: white;
+            color: #ff4d6d;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>¿Quieres ser mi San Valentín? 💘</h1>
+
+    <div class="buttons">
+        <button id="yes">Sí ❤️</button>
+        <button id="no">No 😢</button>
+    </div>
+
+    <script>
+        const noButton = document.getElementById("no");
+        const yesButton = document.getElementById("yes");
+
+        let count = 0;
+
+        noButton.addEventListener("mouseover", function () {
+            count++;
+
+            // En el tercer intento desaparece
+            if (count >= 3) {
+                noButton.style.display = "none";
+                alert("Ya no puedes decir que no 😘");
+                return;
+            }
+
+            const maxX = window.innerWidth - noButton.offsetWidth;
+            const maxY = window.innerHeight - noButton.offsetHeight;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            noButton.style.position = "absolute";
+            noButton.style.left = randomX + "px";
+            noButton.style.top = randomY + "px";
+        });
+
+        yesButton.addEventListener("click", function () {
+            document.body.innerHTML = `
+                <h1 style="margin-top:100px; font-size:50px; color:white;">
+                    ¡Sabía que dirías que sí! ❤️🥰
+                </h1>
+            `;
+        });
+    </script>
+
+</body>
+</html>
